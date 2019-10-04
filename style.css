@@ -8,11 +8,13 @@
     background-color: #4e6151;
     color: white;
     font-size: 2rem;
-    padding: 1rem 2rem 1rem 9rem;
+    padding: 1rem 2rem 1rem 8rem;
+    border: 2px black solid;
+    text-shadow: -5px 5px black;
 }
 
 #maincontainer {
-    background-color: yellow;
+    background-color: #515a41;
     display: flex;
 }
 
@@ -21,6 +23,11 @@
     display: flex;
     flex-direction: column;
     padding: 2rem 1rem;
+    border-right: 2px black solid;
+    border-bottom: 2px black solid;
+    border-left: 2px black solid;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1rem;
 }
 
 #sidebar>button {
@@ -36,13 +43,54 @@
 }
 
 #mainbody {
-    background-color: #3b322c;
+    background-color: #515a41;
     width: 100%;
     padding: 2rem 4rem;
+    border-bottom: 2px black solid;
+    border-right: 2px black solid;
 }
 
-#mainbody>div {
-    padding: 2rem;
+#newNoteFormContainer {
+    padding: 1rem;
+    border: 2px white solid;
+    display: flex;
+    justify-content: center;
+}
+
+#addNewNoteInput {
+    padding: 1rem;
+    font-size: 15px;
+    width: 500px;
+    border-radius: 1rem;
+    display: flex;
+}
+
+#notes-container {
+    border: 2px yellow solid;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+#actualNote {
+    padding: 1rem;
     background-color: white;
     width: 100%;
+    box-shadow: -5px 8px 15px rgb(0, 0, 0);
+    border-radius: 0.7rem;
+    border: 5px black solid;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.noteTitle {
+    border: 2px blue solid;
+    display: inline-block;
+}
+
+.noteContent {
+    border: 2px red solid;
+    padding: 1rem 2rem;
+    display: inline-block;
 }
