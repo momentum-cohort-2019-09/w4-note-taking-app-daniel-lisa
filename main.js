@@ -21,7 +21,6 @@ function addAuthHeader(headers) {
 function displayAllNotes() {
     fetch("https://notes-api.glitch.me/api/notes", {
             headers: {
-                //addAuthHeader({ 'Content-Type': 'application/json' })
                 Authorization: "Basic " + btoa("Team410:password")
             }
         })
@@ -38,13 +37,25 @@ function displayAllNotes() {
                 <div class="noteContent">
                     <p>${note.text}</p>
                 </div>
+                <form id="deleteButtonForm">
+                <button class="deleteNote">Delete</button>
+                <form>
                 </div>`
             }
         });
 }
 
-query("#saveNoteInput").addEventListener('click', function() {
+query("#addNewNoteForm").addEventListener('submit', function(addNewNote) {
     event.preventDefault()
+    fetch("https://notes-api.glitch.me/api/notes", {
+        method: 'POST',
+        body: JSON.stringify({ title: title, text: text }),
+        headers: {
+            'Authorization': "Basic " + btoa("Team410:password"),
+            'Content-Type': 'application/json'
+
+        }
+    })
 })
 
 displayAllNotes();

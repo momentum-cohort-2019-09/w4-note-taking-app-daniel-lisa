@@ -57,7 +57,15 @@
     justify-content: center;
 }
 
-#addNewNoteInput {
+#addNewNoteTitle {
+    padding: 1rem;
+    font-size: 15px;
+    width: 250px;
+    border-radius: 1rem;
+    display: flex;
+}
+
+#addNewNoteText {
     padding: 1rem;
     font-size: 15px;
     width: 500px;
@@ -93,4 +101,12 @@
     border: 2px red solid;
     padding: 1rem 2rem;
     display: inline-block;
+}
+
+.deleteNote {
+    padding: .5rem;
+    font-size: .7rem;
+    width: 50px;
+    border-radius: .5rem;
+    background-color: rgb(219, 68, 68);
 }
