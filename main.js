@@ -30,17 +30,18 @@ function displayAllNotes() {
                 let noteDiv = document.querySelector("#notes-container");
 
                 noteDiv.innerHTML +=
-                    `<div id="actualNote">
-                <div class="noteTitle">
-                    <h3>${note.title}</h3>
-                </div>
-                <div class="noteContent">
-                    <p>${note.text}</p>
-                </div>
-                <form id="deleteButtonForm">
-                <button class="deleteNote">Delete</button>
-                <form>
-                </div>`
+                    `<div class="box1"></div>
+                        <div id="actualNote">
+                            <div class="noteTitle">
+                                <h3>${note.title}</h3>
+                            </div>
+                            <div class="noteContent">
+                                <p>${note.text}</p>
+                            </div>
+                            <form id="deleteButtonForm">
+                                <button class="deleteNote">Delete</button>
+                            <form>
+                        </div>`
             }
         });
 }
@@ -49,7 +50,10 @@ query("#addNewNoteForm").addEventListener('submit', function(addNewNote) {
     event.preventDefault()
     fetch("https://notes-api.glitch.me/api/notes", {
         method: 'POST',
-        body: JSON.stringify({ title: title, text: text }),
+        body: JSON.stringify({
+            title: title,
+            text: text
+        }),
         headers: {
             'Authorization': "Basic " + btoa("Team410:password"),
             'Content-Type': 'application/json'
