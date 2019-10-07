@@ -58,8 +58,31 @@ function addNewNote(title, text) {
     }
 }
 
+function noteToHTML(note) {
+    return `<div id="actualNote">
+
+    <div class="noteTitle">
+        <h3>${note.title}</h3>
+    </div>
+
+    <div class="noteContent">
+        <p>${note.text}</p>
+    </div>
+
+    <div class="editNoteButtonBackground">
+        <button class="editNoteButton" id="${note.id}">Edit Note</button>
+    </div>
+
+    <div class="deleteNoteButtonBackground">
+        <button class="deleteNoteButton" id="${note.id}">Delete Note</button>
+    </div>
+    
+</div>`
+
+}
+
 function deleteNote(noteId) {
-    return fetch('https://notes-api.glitch.me/api/notes/', {
+    fetch('https://notes-api.glitch.me/api/notes/', {
             method: 'DELETE',
             headers: {
                 'Authorization': 'Basic ' + btoa('Team410:password'),
@@ -84,7 +107,7 @@ function main() {
     document.querySelector('#notes-container').addEventListener('click', function(event) {
         event.preventDefault()
 
-        deleteNote()
+        deleteNote(`${note.value}`)
         displayAllNotes()
     })
 
