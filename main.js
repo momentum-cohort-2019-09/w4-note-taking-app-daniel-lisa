@@ -6,15 +6,13 @@ function displayAllNotes() {
     return fetch('https://notes-api.glitch.me/api/notes', {
             method: 'GET',
             headers: {
-                'Authorization': 'Basic' + btoa(`Team410:password`)
+                'Authorization': 'Basic ' + btoa('Team410:password')
             }
         })
         .then(response => response.json())
         .then(function(JSONresponse) {
-            const notesArray = JSONresponse.notesArray
-            for (let note of notesArray) {
-                const title = title
-                const text = text
+            const notes = JSONresponse.notes
+            for (let note of notes) {
                 const noteDiv = document.querySelector('#notes-container')
                 noteDiv.innerHTML =
                     `<div id="actualNote">
@@ -40,7 +38,7 @@ function addNewNote(title, text) {
                 'text': text
             }),
             headers: {
-                'Authorization': 'Basic' + btoa(`Team410:password`),
+                'Authorization': 'Basic ' + btoa('Team410:password'),
                 'Content-Type': 'application/json'
             }
         })
@@ -51,22 +49,12 @@ function deleteNote(noteId) {
     return fetch('https://notes-api.glitch.me/api/notes' + noteId, {
             method: 'DELETE',
             headers: {
-                'Authorization': 'Basic' + btoa(`Team410:password`),
+                'Authorization': 'Basic ' + btoa('Team410:password'),
                 'Content-Type': 'application/json'
             }
         })
         .then(response => {})
 }
-
-// writeNoteToHTML: function(note) {
-//     return
-// },
-
-
-function renderAllNotes() {
-    this.displayAllNotes().then(() => this.renderAllNotes())
-}
-
 
 function main() {
 
@@ -78,7 +66,6 @@ function main() {
 
         addNewNote(title, text)
         displayAllNotes()
-        renderAllNotes()
     })
 
     document.getElementById('notes-container').addEventListener('click', function(event) {
@@ -88,7 +75,6 @@ function main() {
 
             deleteNote(noteId)
             displayAllNotes()
-            renderAllNotes()
         })
         // }
 }
