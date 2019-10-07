@@ -123,8 +123,6 @@
     background: rgba(167, 170, 136, 0.445);
     width: 100%;
     padding: 2rem 4rem;
-    border-bottom: 2px black solid;
-    border-right: 2px black solid;
 }
 
 
@@ -149,7 +147,7 @@
     display: flex;
     border: 10px #6BAF57 solid;
     margin: .5rem;
-    box-shadow: -15px 10px 5px #33492D;
+    box-shadow: -7px 7px 5px #33492D;
 }
 
 
@@ -163,7 +161,7 @@
     display: flex;
     border: 10px #6BAF57 solid;
     margin: .5rem;
-    box-shadow: -15px 10px 5px #33492D;
+    box-shadow: -7px 7px 5px #33492D;
 }
 
 
@@ -173,7 +171,12 @@
     font-size: 1rem;
     padding: .5rem;
     border-radius: .5rem;
+    border-left: 4px #b8b8b8 solid;
+    border-bottom: 4px #b8b8b8 solid;
+    border-top: 1px #b8b8b8 solid;
+    border-right: 1px #b8b8b8 solid;
     box-shadow: -3px 3px 0px #667978;
+    box-shadow: -3px 3px 7px #5a5a5a;
 }
 
 
@@ -241,14 +244,34 @@
 
 #actualNote {
     padding: 1rem;
-    background-color: rgb(255, 255, 255);
+    background: url('http://www.seekgif.com/uploads/2017/08/textures-notebook-paper-design-backgrounds-ppt-backgrounds-templates-1.jpeg');
+    background-repeat: repeat;
+    background-size: 80rem;
+    background-position-x: -1rem;
+    background-position-y: -2.5rem;
     width: 100%;
-    box-shadow: -15px 20px 5px #33492D;
+    box-shadow: -15px 20px 5px #697c63;
+    border-left: 10px solid #d4d4d4;
+    border-bottom: 8px solid #d4d4d4;
+    border-right: 3px solid #e9e9e9;
+    border-top: 3px solid #e9e9e9;
     display: flex;
     flex-direction: column;
     margin: 1rem 2rem 1rem 0;
     border-radius: 0.7rem;
     /* border: 5px black solid; */
+}
+
+#actualNote .noteTitle {
+    margin: 0 0.5rem 0 5.5rem;
+    font-size: 1.5rem;
+    line-height: 5.2rem;
+}
+
+#actualNote .noteContent {
+    margin: 0 0.5rem 0 4rem;
+    font-size: 1rem;
+    line-height: 0.9rem;
 }
 
 
@@ -271,10 +294,63 @@
 
 /*=========================================================| DELETE_BUTTON_IN_EACH_NOTE |==========*/
 
-.deleteNote {
+.deleteNoteButton {
     padding: .5rem;
     font-size: .7rem;
-    width: 50px;
+    width: 60px;
     border-radius: .5rem;
-    background-color: rgb(219, 68, 68);
+    border-top-right-radius: 0.3rem;
+    border-left: 8px #bd3535 solid;
+    border-bottom: 8px #bd3535 solid;
+    border-right: 2px #bd3535 solid;
+    border-top: 2px #bd3535 solid;
+    background-color: #f85656;
+    position: relative;
+    top: 0.25rem;
+    left: 0.3rem;
+    z-index: 2;
+    /* box-shadow: -3px 3px 7px #5a5a5a; */
+}
+
+.deleteNoteButtonBackground {
+    background: #686868;
+    position: relative;
+    top: -3.6rem;
+    left: -0.8rem;
+    z-index: 1;
+    width: 85px;
+    height: 75px;
+    border: 7px #b8b8b8 solid;
+}
+
+
+/*=========================================================| EDIT_BUTTON_IN_EACH_NOTE |==========*/
+
+.editNoteButton {
+    padding: .5rem;
+    font-size: .7rem;
+    width: 60px;
+    border-radius: .5rem;
+    border-top-right-radius: 0.3rem;
+    border-left: 8px #b7be47 solid;
+    border-bottom: 8px #b7be47 solid;
+    border-right: 2px #b7be47 solid;
+    border-top: 2px #b7be47 solid;
+    background-color: #f5fd85;
+    position: relative;
+    z-index: 2;
+    top: 0.2rem;
+    left: 0.3rem;
+    /* box-shadow: -3px 3px 7px #5a5a5a; */
+}
+
+.editNoteButtonBackground {
+    background: #686868;
+    position: relative;
+    top: -3.2rem;
+    left: -0.8rem;
+    z-index: 1;
+    width: 85px;
+    height: 75px;
+    border: 7px #b8b8b8 solid;
 }

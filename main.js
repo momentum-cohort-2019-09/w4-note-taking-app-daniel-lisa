@@ -1,7 +1,5 @@
 /* globals fetch */
 
-// const app = {
-
 function displayAllNotes() {
     return fetch('https://notes-api.glitch.me/api/notes', {
             method: 'GET',
@@ -12,9 +10,10 @@ function displayAllNotes() {
         .then(response => response.json())
         .then(function(JSONresponse) {
             const notes = JSONresponse.notes
+            const noteDiv = document.querySelector('#notes-container')
             for (let note of notes) {
-                const noteDiv = document.querySelector('#notes-container')
-                noteDiv.innerHTML =
+                let newDiv = document.createElement('div')
+                newDiv.innerHTML =
                     `<div id="actualNote">
 
                     <div class="noteTitle">
@@ -24,13 +23,24 @@ function displayAllNotes() {
                     <div class="noteContent">
                         <p>${note.text}</p>
                     </div>
-                        <button class="deleteNoteButton id="${note.id}">Delete Note</button>
+
+                    <div class="editNoteButtonBackground">
+                        <button class="editNoteButton" id="${note.id}">Edit Note</button>
+                    </div>
+
+                    <div class="deleteNoteButtonBackground">
+                        <button class="deleteNoteButton" id="${note.id}">Delete Note</button>
+                    </div>
+                    
                 </div>`
+                noteDiv.append(newDiv)
             }
         })
 }
 
 function addNewNote(title, text) {
+
+    let addNewNoteFrom = document.querySelector('#addNewNoteForm')
     return fetch('https://notes-api.glitch.me/api/notes', {
             method: 'POST',
             body: JSON.stringify({
@@ -43,10 +53,13 @@ function addNewNote(title, text) {
             }
         })
         .then(response => {})
+    if (response.ok) {
+        addNewNoteForm.reset()
+    }
 }
 
 function deleteNote(noteId) {
-    return fetch('https://notes-api.glitch.me/api/notes' + noteId, {
+    return fetch('https://notes-api.glitch.me/api/notes/', {
             method: 'DELETE',
             headers: {
                 'Authorization': 'Basic ' + btoa('Team410:password'),
@@ -56,6 +69,7 @@ function deleteNote(noteId) {
         .then(response => {})
 }
 
+
 function main() {
 
     document.querySelector('#addNewNoteForm').addEventListener('submit', function(event) {
@@ -64,18 +78,17 @@ function main() {
         const title = document.querySelector('#addNewNoteTitle')
         const text = document.querySelector('#addNewNoteText')
 
-        addNewNote(title, text)
+        addNewNote(`${title.value}`, `${text.value}`)
+    })
+
+    document.querySelector('#notes-container').addEventListener('click', function(event) {
+        event.preventDefault()
+
+        deleteNote()
         displayAllNotes()
     })
 
-    document.getElementById('notes-container').addEventListener('click', function(event) {
-            event.preventDefault()
 
-            const noteId = event.target.id
-
-            deleteNote(noteId)
-            displayAllNotes()
-        })
-        // }
 }
+displayAllNotes()
 main()
